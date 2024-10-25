@@ -56,8 +56,32 @@ for df in dataframe_dic:
     valueInDataFrames[f"df_{dataframe_dic}"] = valueDic
     dataFrameCount = dataFrameCount + 1
 
-#for alphaValue in alpha:
+for alphaValue in alpha:
 
+    numberList = [] 
+
+    if alphaValue < 0.5:
+
+        dict1 = {}
+        list2 = []
+
+        df_count = 1
+        for key,df in valueInDataFrames.items():
+            df_list = []
+            a = df["a"]
+            b = df["b"]
+            c = df["c"]
+
+            df_list.append([a,b,c])
+            dict1[f"df_{df_count}"] = df_list
+
+        numCount = 0
+
+        for i in range(n**2):
+            pass
+            
+    else:
+        pass
 
 
 
