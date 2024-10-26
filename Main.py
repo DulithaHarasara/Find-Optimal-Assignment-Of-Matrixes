@@ -72,14 +72,28 @@ for alphaValue in alpha:
             b = df["b"]
             c = df["c"]
 
-            df_list.append([a,b,c])
+            #df_list.append([a,b,c])
+            df_list.append(a)
+            df_list.append(b)
+            df_list.append(c)
             dict1[f"df_{df_count}"] = df_list
 
         numCount = 0
 
-        for i in range(n**2):
-            pass
-            
+        for key,df in dict1.items():
+            numberCount = 0
+            for i in range(n**2):
+                dict3 = {}
+
+                list3 = []
+                for k in df:
+                    list3.append(k[numberCount]) 
+
+                #print(alphaValue,type(list3[0]),list3[1],list3[2])
+                print("--------------------------------------")
+                x = formulaFunctionGraterThan5(alphaValue,list3[0],list3[1],list3[2])
+                print(x)
+                # numberList.append(x)         
     else:
         pass
 
