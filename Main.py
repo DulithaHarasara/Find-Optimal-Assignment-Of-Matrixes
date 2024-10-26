@@ -39,9 +39,9 @@ for df in range(100):
 
     for i in range(n*n):
         a = np.random.uniform(np.finfo(float).eps,4 - np.finfo(float).eps)
-        b = np.random.uniform(4,7 - np.finfo(float).eps)
-        c = np.random.uniform(7,11 - np.finfo(float).eps)
-        new_row = {"A": a,"B": b,"C": c}
+        c = np.random.uniform(4,7 - np.finfo(float).eps)
+        b = np.random.uniform(7,11 - np.finfo(float).eps)
+        new_row = {"a": a,"c": c,"b": b}
         rowList.append(new_row)
 
     dataframe_dic[f"df_{df+1}"] = pd.DataFrame(rowList)
@@ -49,16 +49,16 @@ for df in range(100):
 dataFrameCount = 1
 for df in dataframe_dic:
     a = np.array(dataframe_dic[df].iloc[:,0].values)
-    b = np.array(dataframe_dic[df].iloc[:,1].values)
-    c = np.array(dataframe_dic[df].iloc[:,2].values)
+    c = np.array(dataframe_dic[df].iloc[:,1].values)
+    b = np.array(dataframe_dic[df].iloc[:,2].values)
 
-    valueDic = {"a":a,"b":b,"c":c}
-    valueInDataFrames[f"df_{dataframe_dic}"] = valueDic
+    valueDic = {"a":a,"c":c,"b":b}
+    valueInDataFrames[f"df_{dataFrameCount}"] = valueDic
     dataFrameCount = dataFrameCount + 1
 
 for alphaValue in alpha:
 
-    numberList = [] 
+    numberDict = {} 
 
     if alphaValue < 0.5:
 
@@ -68,36 +68,87 @@ for alphaValue in alpha:
         df_count = 1
         for key,df in valueInDataFrames.items():
             df_list = []
-            a = df["a"]
             b = df["b"]
             c = df["c"]
+            a = df["a"]
+
+            #print(df_list)
 
             #df_list.append([a,b,c])
             df_list.append(a)
-            df_list.append(b)
             df_list.append(c)
+            df_list.append(b)
+           
             dict1[f"df_{df_count}"] = df_list
+            df_count = df_count + 1
 
         numCount = 0
 
+        df_number = 1
         for key,df in dict1.items():
+            #print(df) #df = [[],[],[]]
+            number_List = []
             numberCount = 0
             for i in range(n**2):
                 dict3 = {}
-
                 list3 = []
+
+                #print(df)
                 for k in df:
                     list3.append(k[numberCount]) 
 
-                #print(alphaValue,type(list3[0]),list3[1],list3[2])
-                print("--------------------------------------")
-                x = formulaFunctionGraterThan5(alphaValue,list3[0],list3[1],list3[2])
-                print(x)
-                # numberList.append(x)         
+                #print(alphaValue,list3[0],list3[1],list3[2])
+                #print("--------------------------------------")
+                x = formulaFunctionGraterThan5(alphaValue,list3[0],list3[2],list3[1])
+                #print(x)
+                number_List.append(x) 
+                numberCount = numberCount + 1
+
+            numberDict[f"{df}"] = number_List
+            df_number = df_number + 1
     else:
-        pass
+        dict1 = {}
+        list2 = []
 
+        df_count = 1
+        for key,df in valueInDataFrames.items():
+            df_list = []
+            b = df["b"]
+            c = df["c"]
+            a = df["a"]
 
+            #print(df_list)
 
+            #df_list.append([a,b,c])
+            df_list.append(a)
+            df_list.append(c)
+            df_list.append(b)
+           
+            dict1[f"df_{df_count}"] = df_list
+            df_count = df_count + 1
 
+        numCount = 0
+
+        df_number = 1
+        for key,df in dict1.items():
+            #print(df) #df = [[],[],[]]
+            number_List = []
+            numberCount = 0
+            for i in range(n**2):
+                dict3 = {}
+                list3 = []
+
+                #print(df)
+                for k in df:
+                    list3.append(k[numberCount]) 
+
+                #print(alphaValue,list3[0],list3[1],list3[2])
+                #print("--------------------------------------")
+                x = formulaFunctionGraterThan5(alphaValue,list3[0],list3[2],list3[1])
+                #print(x)
+                number_List.append(x) 
+                numberCount = numberCount + 1
+
+            numberDict[f"{df}"] = number_List
+            df_number = df_number + 1
 

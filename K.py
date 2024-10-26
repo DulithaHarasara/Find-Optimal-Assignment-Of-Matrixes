@@ -54,7 +54,7 @@ for alphaValue in alpha:
             list1.append(j.tolist())
 
         numCount = 0
-
+    
         for i in range(n**2):
 
             list3 = []
