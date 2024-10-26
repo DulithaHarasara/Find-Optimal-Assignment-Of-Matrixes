@@ -68,6 +68,7 @@ for alphaValue in alpha:
             numCount = numCount + 1
 
         emptyList.append(numberList)
+
             
 
     else:
