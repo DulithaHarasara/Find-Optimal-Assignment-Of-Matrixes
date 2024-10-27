@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 import matplotlib.pyplot as plt
+from numpy import array
 
 dataframe_dic = {}
 valueInDataFrames = {}
@@ -156,4 +157,19 @@ for alphaValue in alpha:
             df_number = df_number + 1
         emptyList.append(numberDict)
 
+dictCostMetrix = {}
+dictPerDf = {}
 
+# print(len(emptyList))
+# print(emptyList[0])
+
+for listItem in emptyList:
+    rowCol = {}
+    for key,df in listItem.items():
+        print(key,":")
+        print(df)
+        row_ind,col_ind = linear_sum_assignment(np.array(df).reshape(n,n))
+        rowCol.append(row_ind)
+        rowCol.append(col_ind)
+
+    print("-----------------")
