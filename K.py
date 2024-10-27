@@ -113,12 +113,17 @@ cost_matrix = np.array(emptyList)
 
 listCostMetrix = []
 
+print("-----------------------cost-matrix-----------------------------------")
+print(cost_matrix)
+
 for i in cost_matrix:
     rowCol = []
     row_ind, col_ind = linear_sum_assignment(i.reshape(n,n))
     rowCol.append(row_ind)
     rowCol.append(col_ind)
     listCostMetrix.append(rowCol)
+
+print(listCostMetrix)
     
         
 
@@ -128,8 +133,7 @@ for k in listCostMetrix:
 # Calculate the minimum total cost based on the optimal assignment
 
 countListCostMetrix = 0
-
-  
+ 
 listy = []      
 for i in cost_matrix:
     x = i.reshape(n,n)[listCostMetrix[countListCostMetrix][0],listCostMetrix[countListCostMetrix][1]].sum()
@@ -148,3 +152,4 @@ plt.ylabel('Uncertain value', fontsize=16)
 plt.grid(True)
 plt.show()
 #plt.title('The graph of Uncertain value vs alpha',fontsize=18)
+
